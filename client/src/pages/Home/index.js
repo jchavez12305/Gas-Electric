@@ -1,6 +1,8 @@
+import Map from '../../components/Map';
+
 function Home() {
 	return (
-
+		<>
 		<div className="row g-3">
 			<div className="citybox">
 				<input type="text" className="city" placeholder="City" aria-label="City"></input>
@@ -13,6 +15,8 @@ function Home() {
 			</div>
 			
 		</div>
+		<Map/>
+		</>
 
 	);
 }
