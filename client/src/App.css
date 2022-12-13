@@ -1,1 +1,11 @@
-/* Put generic CSS such as p { font-size: 16px } in here */
+.citybox {
+    text-align: center;
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
