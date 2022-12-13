@@ -11,7 +11,6 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
-import SearchEv from './components/SearchEv';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
@@ -39,11 +38,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-
-
       <Router>
         <Navbar />
-        <SearchEv />
         <Sidebar />
         <Routes>
           <Route
