@@ -1,15 +1,19 @@
 import React from 'react';
-import Map from '../../components/Map';
+import MapContainer from '../../components/Map';
 import SearchEv from '../../components/SearchEv';
+import Navbar from '../../components/Navbar';
+import Sidebar from '../../components/Sidebar';
+
 
 
 function Home() {
 	return (
 		<>
-		<SearchEv/>
-		<Map/>
+			<Navbar />
+			<Sidebar />
+			<SearchEv />
+			<MapContainer/>
 		</>
-
 	);
 }
 
