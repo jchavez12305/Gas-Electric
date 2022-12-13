@@ -43,7 +43,7 @@ function Map () {
     const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let labelIndex = 0;
     // console.log(currentLocation);
-    const center = useMemo(() => (coordinates), []);
+    const center = useMemo(() => ({lat:34.064990,lng:-118.283350}), []);
     return (
         <GoogleMap
             zoom={15}
