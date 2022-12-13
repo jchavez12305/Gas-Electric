@@ -11,7 +11,6 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
-import About from './pages/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
@@ -39,27 +38,22 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      
+
       <Router>
-        <>
-          <Navbar />
-          <Routes>
-            <Route
-              path="/"
-              element={<Home />}
-            />
-            <Route
-              path="/about"
-              element={<About />}
-            />
-            <Route
-              path='*'
-              element={<h1>Wrong page!</h1>}
-            />
-          </Routes>
-        </>
+        <Navbar />
+        <Sidebar />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path='*'
+            element={<h1>Wrong page!</h1>}
+          />
+        </Routes>
       </Router>
-      <Sidebar />
+
     </ApolloProvider>
   );
 }
