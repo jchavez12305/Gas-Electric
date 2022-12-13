@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import SearchEv from './components/SearchEv';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -38,6 +39,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <SearchEv/>
       <Router>
         <>
           <Navbar />
