@@ -1,3 +1,6 @@
+import React from 'react';
+import SearchEv from "../../components/SearchEv";
+
 import Map from '../../components/Map';
 
 function Home() {
@@ -15,10 +18,14 @@ function Home() {
 			</div>
 			
 		</div>
+		<SearchEv/>
 		<Map/>
+
 		</>
 
 	);
 }
+
+
 
 export default Home;
