@@ -1,17 +1,6 @@
-<<<<<<< HEAD
 import React from 'react';
 import SearchEv from "../../components/SearchEv";
-function Home() {
-	return (
-		<>
-		<h1>
-			This is the homepage.
-		</h1>
-		<SearchEv/>
-			
-		
-		</>
-=======
+
 import Map from '../../components/Map';
 
 function Home() {
@@ -29,10 +18,11 @@ function Home() {
 			</div>
 			
 		</div>
+		<SearchEv/>
 		<Map/>
+
 		</>
 
->>>>>>> main
 	);
 }
 

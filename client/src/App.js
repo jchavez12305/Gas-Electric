@@ -12,12 +12,9 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import About from './pages/About';
-<<<<<<< HEAD
-import Contact from './pages/Contact';
+
 import SearchEv from './components/SearchEv';
-=======
 import 'bootstrap/dist/css/bootstrap.min.css';
->>>>>>> main
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -44,11 +41,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-<<<<<<< HEAD
       <SearchEv/>
-=======
       
->>>>>>> main
       <Router>
         <>
           <Navbar />
