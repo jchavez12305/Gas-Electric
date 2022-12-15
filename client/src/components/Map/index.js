@@ -1,5 +1,4 @@
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
-import { useState } from 'react';
 import './index.css';
 
 
@@ -8,170 +7,32 @@ function MapContainer(props) {
     googleMapsApiKey: process.env.REACT_APP_GM_API_KEY,
   })
 
-
-
-  // const callGeolocation = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_GM_API_KEY}`,
-  //       { method: 'POST' }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
-
-  //     const { location } = await response.json();
-  //     // console.log(location);
-
-  //     const responseZip = await fetch(
-  //       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${process.env.REACT_APP_GM_API_KEY}`,
-  //       { method: 'POST' }
-  //     );
-
-  //     if (!responseZip.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
-  //     const address = await responseZip.json();
-  //     let zip = address.results[0].address_components[8].short_name;
-  //     console.log(address);
-  //     setZipcodeInput(...zipcodeInput, zip);
-  //     setLocationMap({
-  //       ...locationMap,
-  //       lat: location.lat,
-  //       lng: location.lng
-  //     }
-  //     );
-  //     console.log(zipcodeInput,'geolocation');
-
-  //     search();
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // };
-
   // async function newCenter() {
   //   let position = this.getPosition().toJSON();
-  //   geocode(position);  
-  // }
-
-  // async function geocode(coordinates){
-  //   try {
-  //     const response = await fetch(
-  //       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.lat},${coordinates.lng}&key=${process.env.REACT_APP_GM_API_KEY}`,
-  //       { method: 'POST' }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
-  //     setLocationMap({
-  //       ...locationMap,
-  //       lat: coordinates.lat,
-  //       lng: coordinates.lng
-  //     }
-  //     );
-  //     const address = await response.json();
-  //     let zip = address.results[0].address_components[7].short_name;
-  //     setZipcodeInput(...zipcodeInput, zip);
-  //     search();
-
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // } 
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   return name === setZipcodeInput(value);
-  // };
-
-  // const handleFormSubmit = async (event) => {
-  //   event ? event.preventDefault() : console.log('noEvent');
-  //   try {
-  //     const response = await fetch(
-  //       `https://maps.googleapis.com/maps/api/geocode/json?address=${zipcodeInput}&key=${process.env.REACT_APP_GM_API_KEY}`,
-  //       { method: 'POST' }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
-
-  //     const address = await response.json();
-  //     let latlng = address.results[0].geometry.location;
-  //     setLocationMap({
-  //       ...locationMap,
-  //       lat: latlng.lat,
-  //       lng: latlng.lng
-  //     }
-  //     );
-  //     search();
-
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // };
-
-  // async function search() {
-  //   // let allMarkers = document.getElementsByClassName('marker');
-  //   // allMarkers.remove();
-  //   // labelIndex=0;
-  //   // fuelIndex=0;
-  //   if (!zipcodeInput) {
-  //     return false;
-  //   }
-  //   console.log(zipcodeInput,'search');
-  //   try {
-  //     const responseEv = await fetch(
-  //       `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${zipcodeInput}&${process.env.REACT_APP_EV_API_KEY}`
-  //     );
-  //     console.log(responseEv);
-  //     //will need to update initial website
-  //     const responseFuel = await fetch(
-  //       `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zipcodeInput}&key=${process.env.REACT_APP_GM_API_KEY}`
-  //     );
-  //     if (!responseEv.ok || !responseFuel.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
-  //     const stationsEv = await responseEv.json();
-  //     const stationsFuel = await responseFuel.json(); 
-  //     // console.log(stationsEv);
-  //     // console.log(stationsFuel);
-  //     setstationsFUEL(...stationsFUEL, stationsFuel);
-  //     setstationsEV(...stationsEV, stationsEv);
-  //     // setZipcodeInput("");
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-
+  //   props.setLocationMap({
+	// 		...props.locationMap,
+	// 		lat: position.lat,
+	// 		lng: position.lng
+	// 	});
+  //   props.geocode();
   // }
 
   if (!isLoaded) return <div>Loading...</div>;
   return <div className='mapContainer'><Map
-    // coord={locationMap}
-    // geolocation={callGeolocation}
     // newCenter={newCenter}
-    // zipcodeInput={zipcodeInput}
-    // handleFormSubmit={handleFormSubmit}
-    // handleChange={handleChange}
-    // stationsEV={stationsEV}
-    // stationsFUEL={stationsFUEL}
-    // labelIndex={labelIndex}
-    // fuelIndex={fuelIndex} 
+    mapInfo={props.mapInfo}
+    setMapInfo={props.setMapInfo}
     // zipcodeInput={props.zipcodeInput}
-    // setZipcodeInput={props.setZipcodeInput}
-    locationMap={props.locationMap}
-    // setLocationMap={props.setLocationMap}
-    stationsEV={props.stationsEV}
-		// setstationsEV={props.setstationsEV}
+    // stationsEV={props.stationsEV}
+    // stationsFUEL={props.stationsFUEL}
+    // locationMap={props.locationMap}
   /></div>;
 }
 
 function Map(props) {
   //this is so it doesnt reset when it rerenders
   let labelIndex = 0;
-  // let fuelIndex = 0;
+  let fuelIndex = 0;
 
   function labelMaker(index) {
     const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -181,29 +42,29 @@ function Map(props) {
     }
     return longerLabel;
   }
+  let locationMap=props.mapInfo.locationMap;
+  let zipcodeInput=props.mapInfo.zipcodeInput;
+  let stationsEV=props.stationsEV;
+  let stationsFUEL=props.stationsFUEL;
+  if(!zipcodeInput){
+    stationsEV={fuel_stations:[]};
+    stationsFUEL={results:[]};
+  }
+
   return (
     <>
-      {/* <button onClick={props.geolocation}>Geolocation</button>
-      <form onSubmit={props.handleFormSubmit}>
-        <input name="zipcodeInput"
-          value={props.zipcodeInput}
-          onChange={props.handleChange}
-          type="text" />
-        <button type='submit'>Submit</button>
-      </form> */}
-
       <GoogleMap
         zoom={15}
-        center={{ lat: props.locationMap.lat, lng: props.locationMap.lng }}
+        center={{ lat: locationMap.lat, lng: locationMap.lng }}
         mapContainerClassName="map">
         <MarkerF
-          position={{ lat: props.locationMap.lat, lng: props.locationMap.lng }}
+          position={{ lat: locationMap.lat, lng: locationMap.lng }}
           title='user'
           id='user'
           draggable
           // onDragEnd={props.newCenter}
         />
-        {props.stationsEV.fuel_stations?.map((station) => {
+        {stationsEV.fuel_stations?.map((station) => {
           let position = { lat: station.latitude, lng: station.longitude };
           labelIndex++;
           let label = `E-${labelMaker(labelIndex)}`;
@@ -212,7 +73,7 @@ function Map(props) {
             <MarkerF key={label} position={position} label={label} title={stationName} />
           )
         })};
-        {/* {props.stationsFUEL.results?.map((station) => {
+        {stationsFUEL.results?.map((station) => {
           let location = station.geometry.location;
           let position = { lat: location.lat, lng: location.lng };
           fuelIndex++;
@@ -221,7 +82,7 @@ function Map(props) {
           return (
             <MarkerF key={label} position={position} label={label} title={stationName} />
           )
-        })}; */}
+        })};
       </GoogleMap>
     </>
   );
