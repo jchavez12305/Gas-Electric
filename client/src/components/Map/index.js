@@ -28,17 +28,17 @@ const callGeolocation = async () => {
   let coordinates = callGeolocation();
   console.log(coordinates, 'coordinates');
 
-export default function MapContainer() {
+export default function MapContainer(props) {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GM_API_KEY,
     })
     if (!isLoaded) return <div>Loading...</div>;
-    return <div className='mapContainer'><Map /></div>;
+    return <div className='mapContainer'><Map zipcodeInput={props.zipcodeInput} setZipcodeInput={props.setZipcodeInput}/></div>;
 
 }
 
 
-function Map () {
+function Map (props) {
     //this is so it doesnt reset when it rerenders
     const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let labelIndex = 0;
