@@ -11,7 +11,7 @@ function Sidebar() {
 
 	return (
 		<>
-			<Button variant="primary" onClick={handleShow}>
+			<Button variant="primary" onClick={handleShow} className = "filter">
 				Filter
 			</Button>
 
