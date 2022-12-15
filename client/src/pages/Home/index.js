@@ -1,8 +1,6 @@
 import React from 'react';
 import MapContainer from '../../components/Map';
 import SearchEv from '../../components/SearchEv';
-import Navbar from '../../components/Navbar';
-import Sidebar from '../../components/Sidebar';
 import { useState } from 'react';
 
 
@@ -17,8 +15,6 @@ function Home() {
 	return (
 
 		<>
-			<Navbar />
-			<Sidebar />
 			<SearchEv
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
