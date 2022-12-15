@@ -12,46 +12,39 @@ import { useMutation } from '@apollo/client';
 
 function SearchEv(props) {
 
-  
 
-  // const handleChange = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    return name === props.setZipcodeInput(value);
+  };
 
-  //   const { name, value } = e.target;
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-  //   return name === setZipcodeInput(value);
-  // };
+    if (!props.zipcodeInput) {
+      return false;
+    }
 
-  
+    try {
+      const response = await fetch(
+        `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${props.zipcodeInput}&${process.env.REACT_APP_EV_API_KEY}`
+      );
 
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
 
-  //   if (!zipcodeInput) {
-  //     return false;
-  //   }
+      const stationsEv = await response.json();
 
-  //   try {
-  //     const response = await fetch(
-  //       `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${zipcodeInput}&${process.env.REACT_APP_EV_API_KEY}`
-  //     );
+      props.setZipcodeInput("");
+      props.setstationsEV(...props.stationsEV, stationsEv);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-  //     if (!response.ok) {
-  //       throw new Error('something went wrong!');
-  //     }
-
-  //     const items = await response.json();
-  //     const stations = items.fuel_stations;
-  //     console.log(stations)
-      
-
-  //     setZipcodeInput("");
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   
-
   return (
     <>
 
@@ -65,7 +58,7 @@ function SearchEv(props) {
               <Form.Control
                 name="zipcodeInput"
                 value={props.zipcodeInput}
-                onChange={props.handleChange}
+                onChange={handleChange}
                 type="text"
 
                 size="sm"
