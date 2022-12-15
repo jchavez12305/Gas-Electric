@@ -10,59 +10,63 @@ import {
 
 import { useMutation } from '@apollo/client';
 
-function SearchEv() {
+function SearchEv(props) {
 
-  const [zipcodeInput, setZipcodeInput] = useState("");
+  
 
-  const handleChange = (e) => {
+  // const handleChange = (e) => {
 
-    const { name, value } = e.target;
+  //   const { name, value } = e.target;
 
-    return name === setZipcodeInput(value);
-  };
+  //   return name === setZipcodeInput(value);
+  // };
 
+  
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
 
-    if (!zipcodeInput) {
-      return false;
-    }
+  //   if (!zipcodeInput) {
+  //     return false;
+  //   }
 
-    try {
-      const response = await fetch(
-        `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${zipcodeInput}&${process.env.REACT_APP_EV_API_KEY}`
-      );
+  //   try {
+  //     const response = await fetch(
+  //       `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${zipcodeInput}&${process.env.REACT_APP_EV_API_KEY}`
+  //     );
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('something went wrong!');
+  //     }
 
+  //     const items = await response.json();
+  //     const stations = items.fuel_stations;
+  //     console.log(stations)
+      
 
+  //     setZipcodeInput("");
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
-
-      setZipcodeInput("");
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+  
 
   return (
     <>
       <Container fluid className="text-light bg-dark">
         <h1>Search for EV Stations</h1>
-        <Form onSubmit={handleFormSubmit}>
+        <Form onSubmit={props.handleFormSubmit}>
           <Row>
             <Col xs={12} md={8}>
 
               <Form.Control
                 name="zipcodeInput"
-                value={zipcodeInput}
-                onChange={handleChange}
+                value={props.zipcodeInput}
+                onChange={props.handleChange}
                 type="text"
                 size="lg"
-                placeholder="90046"
+                placeholder="enter your zipcode"
               />
 
             </Col>
