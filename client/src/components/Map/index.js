@@ -37,7 +37,8 @@ function MapContainer() {
         throw new Error('something went wrong!');
       }
       const address = await responseZip.json();
-      let zip = address.results[0].address_components[7].short_name;
+      let zip = address.results[0].address_components[8].short_name;
+      console.log(address);
       setZipcodeInput(...zipcodeInput, zip);
       setLocationMap({
         ...locationMap,
@@ -129,6 +130,7 @@ function MapContainer() {
       const responseEv = await fetch(
         `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${zipcodeInput}&${process.env.REACT_APP_EV_API_KEY}`
       );
+      console.log(responseEv);
       //will need to update initial website
       const responseFuel = await fetch(
         `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zipcodeInput}&key=${process.env.REACT_APP_GM_API_KEY}`
@@ -138,6 +140,8 @@ function MapContainer() {
       }
       const stationsEv = await responseEv.json();
       const stationsFuel = await responseFuel.json(); 
+      // console.log(stationsEv);
+      // console.log(stationsFuel);
       setstationsFUEL(...stationsFUEL, stationsFuel);
       setstationsEV(...stationsEV, stationsEv);
       // setZipcodeInput("");
