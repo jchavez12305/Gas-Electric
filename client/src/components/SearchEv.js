@@ -54,9 +54,11 @@ function SearchEv(props) {
 
   return (
     <>
-      <Container fluid className="text-light bg-dark">
-        <h1>Search for EV Stations</h1>
-        <Form onSubmit={props.handleFormSubmit}>
+
+      <Container fluid className="text-light search" style={{width: "500px"}}  >
+        <h3>Search for EV Stations</h3>
+        <Form onSubmit={handleFormSubmit}>
+
           <Row>
             <Col xs={12} md={8}>
 
@@ -65,13 +67,15 @@ function SearchEv(props) {
                 value={props.zipcodeInput}
                 onChange={props.handleChange}
                 type="text"
-                size="lg"
-                placeholder="enter your zipcode"
+
+                size="sm"
+                placeholder="zip"
+
               />
 
             </Col>
             <Col xs={12} md={4}>
-              <Button type="submit" variant="success" size="lg">
+              <Button type="submit" variant="success" size="sm">
                 Submit Search
               </Button>
             </Col>
