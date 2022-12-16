@@ -3,12 +3,13 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    /* padding: 20px; */
+    height: 20vh;
 }
 
 .logo {
     height: 100px;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
   }
   
   .motto {

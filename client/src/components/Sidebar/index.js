@@ -12,9 +12,9 @@ function Sidebar() {
 
 	return (
 		<>
-			{/* <Button variant="primary" onClick={handleShow} className = "filter">
+			<Button variant="primary" onClick={handleShow} className = "filter">
 				Filter
-			</Button> */}
+			</Button>
 
 			<Offcanvas show={show} onHide={handleClose}>
 				<Offcanvas.Header closeButton>

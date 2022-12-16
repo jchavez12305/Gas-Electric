@@ -98,7 +98,7 @@ function Home() {
 
 		<>
 			<Sidebar />
-			{/* <SearchEv
+			<SearchEv
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
@@ -109,22 +109,8 @@ function Home() {
 				setLocationMap={setLocationMap}
 				search={search}
 				callGeolocation={callGeolocation}
-			/> */}
-
-			<MapContainer
-				zipcodeInput={zipcodeInput}
-				setZipcodeInput={setZipcodeInput}
-				stationsFUEL={stationsFUEL}
-				setstationsFUEL={setstationsFUEL}
-				stationsEV={stationsEV}
-				setstationsEV={setstationsEV}
-				locationMap={locationMap}
-				setLocationMap={setLocationMap}
-				search={search}
-				geocode={geocode}
 			/>
-			<StationListAPI
-
+			{/* <MapContainer
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
@@ -135,7 +121,18 @@ function Home() {
 				setLocationMap={setLocationMap}
 				search={search}
 				geocode={geocode}
-
+			/> */}
+			<StationListAPI
+				zipcodeInput={zipcodeInput}
+				setZipcodeInput={setZipcodeInput}
+				stationsFUEL={stationsFUEL}
+				setstationsFUEL={setstationsFUEL}
+				stationsEV={stationsEV}
+				setstationsEV={setstationsEV}
+				locationMap={locationMap}
+				setLocationMap={setLocationMap}
+				search={search}
+				geocode={geocode}
 			/>
 		</>
 	);
