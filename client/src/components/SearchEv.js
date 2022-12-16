@@ -1,53 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Row,
   Container,
   Col,
   Form,
   Button,
-
 } from 'react-bootstrap';
 
-import { useMutation } from '@apollo/client';
 
 function SearchEv(props) {
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    return name === props.setZipcodeInput(value);
+    localStorage.setItem('zip', value);
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    if (!props.zipcodeInput) {
+    let zip = localStorage.getItem('zip');
+    if (!zip) {
       return false;
     }
-
     try {
       const response = await fetch(
-        `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${props.zipcodeInput}&${process.env.REACT_APP_EV_API_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${zip}&key=${process.env.REACT_APP_GM_API_KEY}`,
+        { method: 'POST' }
       );
 
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
-      const stationsEv = await response.json();
-
-      props.setZipcodeInput("");
-      props.setstationsEV(...props.stationsEV, stationsEv);
+      const address = await response.json();
+      let latlng = address.results[0].geometry.location;
+      localStorage.setItem('latlng', JSON.stringify(latlng));
+      props.search();
     } catch (err) {
       console.error(err);
     }
   };
 
-
-  
   return (
     <>
-
       <Container fluid className="text-light search" style={{width: "500px"}}  >
         <h3>Search for EV Stations</h3>
         <Form onSubmit={handleFormSubmit}>
@@ -57,15 +52,13 @@ function SearchEv(props) {
 
               <Form.Control
                 name="zipcodeInput"
-                value={props.zipcodeInput}
+                // value={props.zipcodeInput}
                 onChange={handleChange}
                 type="text"
 
                 size="sm"
                 placeholder="zip"
-
               />
-
             </Col>
             <Col xs={12} md={4}>
               <Button type="submit" variant="success" size="sm">
