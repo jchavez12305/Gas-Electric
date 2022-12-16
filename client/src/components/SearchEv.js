@@ -32,8 +32,8 @@ function SearchEv(props) {
         throw new Error('something went wrong!');
       }
 
-      const stationsEv = await response.json();
-console.log(stationsEv)
+//       const stationsEv = await response.json();
+// console.log(stationsEv)
       // props.setZipcodeInput("");
       // props.setstationsEV(stationsEv);
       const address = await response.json();

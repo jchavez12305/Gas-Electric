@@ -31,22 +31,24 @@ export const SAVE_STATION = gql`
       username
       email
       savedStations {
-        stationId
-        link
+        stationName
+        fuelType
+				address
       }
     }
   }
 `;
 
 export const REMOVE_STATION = gql`
-  mutation removeStation($stationId: ID!) {
-    removeStation(stationId: $stationId) {
+  mutation removeStation($stationName: ID!) {
+    removeStation(stationName: $stationName) {
       _id
       username
       email
       savedStation {
-        stationId
-        link
+        stationName
+        fuelType
+				address
       }
     }
   }
