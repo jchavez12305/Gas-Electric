@@ -82,8 +82,8 @@ function Home() {
 			}
 			const stationsEv = await responseEv.json();
 			const stationsFuel = await responseFuel.json();
-			setstationsFUEL(...stationsFUEL, stationsFuel);
-			setstationsEV(...stationsEV, stationsEv);
+			setstationsFUEL(stationsFuel);
+			setstationsEV( stationsEv);
 			setLocationMap({ ...locationMap, lat: latlng.lat, lng: latlng.lng })
 			setZipcodeInput(...zipcodeInput, "");
 			console.log('search');
