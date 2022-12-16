@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Form from 'react-bootstrap/Form';
+import './index.css';
 
 function Sidebar() {
 	const [show, setShow] = useState(false);
@@ -11,9 +12,9 @@ function Sidebar() {
 
 	return (
 		<>
-			<Button variant="primary" onClick={handleShow} className = "filter">
+			{/* <Button variant="primary" onClick={handleShow} className = "filter">
 				Filter
-			</Button>
+			</Button> */}
 
 			<Offcanvas show={show} onHide={handleClose}>
 				<Offcanvas.Header closeButton>

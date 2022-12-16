@@ -6,6 +6,8 @@ import {
   Form,
   Button,
 } from 'react-bootstrap';
+import './index.css';
+
 
 
 function SearchEv(props) {
@@ -73,6 +75,7 @@ function SearchEv(props) {
             </Col>
           </Row>
         </Form>
+        <button onClick={props.callGeolocation}>Use Location</button>
       </Container>
     </>
   );

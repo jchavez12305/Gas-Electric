@@ -1,0 +1,10 @@
+.search {
+    position:absolute;
+    padding-bottom: 6px;
+    /* padding-top: 6px; */
+    /* height: 70px; */
+    top: 100px;
+    left:450px;
+    background-color:rgb(2, 46, 55);
+  
+  }

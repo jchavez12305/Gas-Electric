@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import image from "../../images/image2.png";
+import image from "../../assets/images/image2.png";
 import { useMutation } from '@apollo/client';
 import { ADD_USER, LOGIN_USER } from '../../utils/mutations';
+import './index.css';
 
 import Auth from "../../utils/auth"
 
@@ -15,11 +16,11 @@ function Navbar() {
 		username: '',
 		email: '',
 		password: '',
-	  });
-	  const [userLoginData, setUserLoginData] = useState({
+	});
+	const [userLoginData, setUserLoginData] = useState({
 		email: '',
 		password: '',
-	  });
+	});
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
@@ -29,68 +30,72 @@ function Navbar() {
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setUserFormData({ ...userFormData, [name]: value });
-	  };
-	  const handleLoginChange = (event) => {
+	};
+	const handleLoginChange = (event) => {
 		const { name, value } = event.target;
 		setUserLoginData({ ...userLoginData, [name]: value });
-	  };
-	  const handleFormSubmit = async (event) => {
+	};
+	const handleFormSubmit = async (event) => {
 		event.preventDefault();
-	
+
 		// check if form has everything (as per react-bootstrap docs)
-	
+
 		try {
-		  const { data } = await addUser({
-			variables: { ...userFormData },
-		  });
-		  console.log(data);
-		  Auth.login(data.addUser.token);
+			const { data } = await addUser({
+				variables: { ...userFormData },
+			});
+			console.log(data);
+			Auth.login(data.addUser.token);
 		} catch (err) {
-		  console.error(err);
+			console.error(err);
 		}
-	
+
 		setUserFormData({
-		  username: '',
-		  email: '',
-		  password: '',
+			username: '',
+			email: '',
+			password: '',
 		});
-	  };
-	  const handleLoginSubmit = async (event) => {
+	};
+	const handleLoginSubmit = async (event) => {
 		event.preventDefault();
-	
+
 		// check if form has everything (as per react-bootstrap docs)
-	
+
 		try {
-		  const { data } = await login({
-			variables: { ...userLoginData },
-		  });
-		  console.log(data);
-		  Auth.login(data.login.token);
+			const { data } = await login({
+				variables: { ...userLoginData },
+			});
+			console.log(data);
+			Auth.login(data.login.token);
 		} catch (err) {
-		  console.error(err);
+			console.error(err);
 		}
-	
+
 		setUserLoginData({
-		  email: '',
-		  password: '',
+			email: '',
+			password: '',
 		});
-	  };
+	};
 
 	const handleSignInClose = () => setSignInShow(false);
 	const handleSignInShow = () => setSignInShow(true);
 	return (
 		<>
-			<div>
-				<a href=".." target="_blank" rel="noreferrer" >
-					<img src={image} className="logo" alt="image2.png" />
-				
+			<nav>
+				<a href="/" >
+					<img src={image} className="logo" />
 				</a>
-			</div>
-			<div className = "signin" style={{ display: 'flex', justifyContent: 'flex-end' }}>
-				<Button variant="primary" className = "signin" onClick={handleSignInShow}>
-					Sign In
-				</Button>
-			</div>
+				<h1 className='motto'>Find Gas and Electric Stations</h1>
+				<div className='signUp/In'>
+					<Button className='signBtn' onClick={handleSignInShow}>
+						Sign In
+					</Button>
+					<Button className='signBtn' onClick={handleShow}>
+						Sign Up
+					</Button>
+				</div>
+			</nav>
+
 
 			<Modal show={showSignIn} onHide={handleSignInClose}>
 				<Modal.Header closeButton>
@@ -132,14 +137,6 @@ function Navbar() {
 					</Button> */}
 				</Modal.Footer>
 			</Modal>
-
-
-			<div style={{ display: 'flex', justifyContent: 'end' }}>
-				<Button variant="center" onClick={handleShow}>
-					Sign Up
-				</Button>
-			</div>
-
 
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>

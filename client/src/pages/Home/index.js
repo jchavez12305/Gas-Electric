@@ -1,8 +1,9 @@
 import React from 'react';
 import MapContainer from '../../components/Map';
-import SearchEv from '../../components/SearchEv';
+import SearchEv from '../../components/SearchEv/index';
 import { useState } from 'react';
 import StationListAPI from '../../components/StationListAPI'
+import Sidebar from '../../components/Sidebar';
 
 
 
@@ -84,7 +85,7 @@ function Home() {
 			const stationsEv = await responseEv.json();
 			const stationsFuel = await responseFuel.json();
 			setstationsFUEL(stationsFuel);
-			setstationsEV( stationsEv);
+			setstationsEV(stationsEv);
 			setLocationMap({ ...locationMap, lat: latlng.lat, lng: latlng.lng })
 			setZipcodeInput(...zipcodeInput, "");
 			console.log('search');
@@ -96,8 +97,8 @@ function Home() {
 	return (
 
 		<>
-			<SearchEv
-
+			<Sidebar />
+			{/* <SearchEv
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
@@ -107,10 +108,10 @@ function Home() {
 				locationMap={locationMap}
 				setLocationMap={setLocationMap}
 				search={search}
-			/>
-			<button onClick={callGeolocation}>Use Location</button>
+				callGeolocation={callGeolocation}
+			/> */}
+
 			<MapContainer
-
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
@@ -122,8 +123,8 @@ function Home() {
 				search={search}
 				geocode={geocode}
 			/>
-			<StationListAPI 
-			
+			<StationListAPI
+
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
@@ -134,7 +135,7 @@ function Home() {
 				setLocationMap={setLocationMap}
 				search={search}
 				geocode={geocode}
-			
+
 			/>
 		</>
 	);

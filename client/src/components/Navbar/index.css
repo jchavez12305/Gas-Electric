@@ -1,0 +1,24 @@
+nav{
+    background: linear-gradient(#0C1D36, #0f2b57);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    height: 100px;
+    padding-bottom: 5px;
+  }
+  
+  .motto {
+    color: #F9CC0B;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+  }
+
+  .signBtn {
+    background-color: #0C1D36;
+    font-weight: bold;
+    border: #F9CC0B 2px solid;
+  }
