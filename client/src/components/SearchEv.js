@@ -32,10 +32,14 @@ function SearchEv(props) {
         throw new Error('something went wrong!');
       }
 
-      const address = await response.json();
-      let latlng = address.results[0].geometry.location;
-      localStorage.setItem('latlng', JSON.stringify(latlng));
-      props.search();
+      const stationsEv = await response.json();
+console.log(stationsEv)
+      props.setZipcodeInput("");
+      props.setstationsEV(stationsEv);
+      // const address = await response.json();
+      // let latlng = address.results[0].geometry.location;
+      // localStorage.setItem('latlng', JSON.stringify(latlng));
+      // props.search();
     } catch (err) {
       console.error(err);
     }
