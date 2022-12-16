@@ -40,7 +40,7 @@ export const SAVE_STATION = gql`
 
 export const REMOVE_STATION = gql`
   mutation removeStation($stationId: ID!) {
-    removeStation(bookId: $bookId) {
+    removeStation(stationId: $stationId) {
       _id
       username
       email
