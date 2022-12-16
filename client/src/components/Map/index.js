@@ -35,9 +35,11 @@ function Map(props) {
   function labelMaker(index) {
     const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let longerLabel = '';
-    for (let i = 0; i < index / labels.length; i++) {
-      longerLabel += labels[index % labels.length];
+    if (index >= labels.length) {
+      let round = Math.floor(index / labels.length)-1;
+      longerLabel += labels[round];
     }
+    longerLabel += labels[index % labels.length];
     return longerLabel;
   }
 
@@ -57,21 +59,21 @@ function Map(props) {
         />
         {props.stationsEV.fuel_stations?.map((station) => {
           let position = { lat: station.latitude, lng: station.longitude };
-          labelIndex++;
           let label = `E-${labelMaker(labelIndex)}`;
+          labelIndex++;
           let stationName = station.station_name;
           return (
-            <MarkerF key={label} position={position} label={label} title={stationName} />
+            <MarkerF key={`E-${station.id}`} position={position} label={label} title={stationName} />
           )
         })};
         {props.stationsFUEL.results?.map((station) => {
           let location = station.geometry.location;
           let position = { lat: location.lat, lng: location.lng };
-          fuelIndex++;
           let label = `G-${labelMaker(fuelIndex)}`;
+          fuelIndex++;
           let stationName = station.name;
           return (
-            <MarkerF key={label} position={position} label={label} title={stationName} />
+            <MarkerF key={`G-${station.place_id}`} position={position} label={label} title={stationName} />
           )
         })};
       </GoogleMap>
