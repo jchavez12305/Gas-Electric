@@ -16,6 +16,11 @@ export const QUERY_ME = gql`
 			username
 			email
 			_id
+			savedStations {
+				stationName
+        		fuelType
+				address
+			}
 		}
 	}
 `;
