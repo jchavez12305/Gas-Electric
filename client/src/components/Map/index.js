@@ -7,25 +7,23 @@ function MapContainer(props) {
     googleMapsApiKey: process.env.REACT_APP_GM_API_KEY,
   })
 
-  // async function newCenter() {
-  //   let position = this.getPosition().toJSON();
-  //   props.setLocationMap({
-	// 		...props.locationMap,
-	// 		lat: position.lat,
-	// 		lng: position.lng
-	// 	});
-  //   props.geocode();
-  // }
+  async function newCenter() {
+    let position = this.getPosition().toJSON();
+    let latlng = {
+      lat: position.lat,
+      lng: position.lng
+    };
+    localStorage.setItem('latlng', JSON.stringify(latlng));
+    props.geocode();
+  }
 
   if (!isLoaded) return <div>Loading...</div>;
   return <div className='mapContainer'><Map
-    // newCenter={newCenter}
-    mapInfo={props.mapInfo}
-    setMapInfo={props.setMapInfo}
-    // zipcodeInput={props.zipcodeInput}
-    // stationsEV={props.stationsEV}
-    // stationsFUEL={props.stationsFUEL}
-    // locationMap={props.locationMap}
+    newCenter={newCenter}
+    zipcodeInput={props.zipcodeInput}
+    stationsEV={props.stationsEV}
+    stationsFUEL={props.stationsFUEL}
+    locationMap={props.locationMap}
   /></div>;
 }
 
@@ -42,29 +40,22 @@ function Map(props) {
     }
     return longerLabel;
   }
-  let locationMap=props.mapInfo.locationMap;
-  let zipcodeInput=props.mapInfo.zipcodeInput;
-  let stationsEV=props.stationsEV;
-  let stationsFUEL=props.stationsFUEL;
-  if(!zipcodeInput){
-    stationsEV={fuel_stations:[]};
-    stationsFUEL={results:[]};
-  }
+
 
   return (
     <>
       <GoogleMap
         zoom={15}
-        center={{ lat: locationMap.lat, lng: locationMap.lng }}
+        center={{ lat: props.locationMap.lat, lng: props.locationMap.lng }}
         mapContainerClassName="map">
         <MarkerF
-          position={{ lat: locationMap.lat, lng: locationMap.lng }}
+          position={{ lat: props.locationMap.lat, lng: props.locationMap.lng }}
           title='user'
           id='user'
           draggable
-          // onDragEnd={props.newCenter}
+          onDragEnd={props.newCenter}
         />
-        {stationsEV.fuel_stations?.map((station) => {
+        {props.stationsEV.fuel_stations?.map((station) => {
           let position = { lat: station.latitude, lng: station.longitude };
           labelIndex++;
           let label = `E-${labelMaker(labelIndex)}`;
@@ -73,7 +64,7 @@ function Map(props) {
             <MarkerF key={label} position={position} label={label} title={stationName} />
           )
         })};
-        {stationsFUEL.results?.map((station) => {
+        {props.stationsFUEL.results?.map((station) => {
           let location = station.geometry.location;
           let position = { lat: location.lat, lng: location.lng };
           fuelIndex++;

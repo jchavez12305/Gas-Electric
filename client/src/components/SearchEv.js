@@ -13,7 +13,6 @@ function SearchEv(props) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     localStorage.setItem('zip', value);
-    // return name === props.setZipcodeInput(value);
   };
 
   const handleFormSubmit = async (event) => {
@@ -23,9 +22,6 @@ function SearchEv(props) {
     if (!zip) {
       return false;
     }
-    // if (!props.zipcodeInput) {
-    //   return false;
-    // }
     try {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${zip}&key=${process.env.REACT_APP_GM_API_KEY}`,
@@ -39,12 +35,6 @@ function SearchEv(props) {
       const address = await response.json();
       let latlng = address.results[0].geometry.location;
       localStorage.setItem('latlng', JSON.stringify(latlng));
-      // props.setLocationMap({
-      //   ...props.locationMap,
-      //   lat: latlng.lat,
-      //   lng: latlng.lng
-      // }
-      // );
       props.search();
     } catch (err) {
       console.error(err);
