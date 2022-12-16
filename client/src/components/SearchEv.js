@@ -35,9 +35,9 @@ function SearchEv(props) {
       }
 
       const stationsEv = await response.json();
-
+console.log(stationsEv)
       props.setZipcodeInput("");
-      props.setstationsEV(...props.stationsEV, stationsEv);
+      props.setstationsEV(stationsEv);
     } catch (err) {
       console.error(err);
     }
