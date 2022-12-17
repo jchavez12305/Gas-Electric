@@ -65,7 +65,7 @@ function Map(props) {
           labelIndex++;
           let stationName = station.station_name;
           return (
-            <MarkerF className="marker" key={`E-${station.id}`} position={position} label={label} title={stationName} />
+            <MarkerF className="marker" key={`E-${station.id}`} position={position} label={label} title={stationName} onClick={} />
           )
         })};
         {props.stationsFUEL.results?.map((station) => {
