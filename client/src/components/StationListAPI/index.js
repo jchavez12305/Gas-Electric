@@ -27,7 +27,7 @@ let fuelIndex = 0;
             labelIndex++;
 
             return(
-                <div class="stationName">
+                <div key={`RE-${station.id}`} className="stationName">
                     <h4>{label}</h4>
                     <h5>{station.station_name}</h5>
                 <div class="addressDetails">
@@ -41,7 +41,7 @@ let fuelIndex = 0;
             fuelIndex++;
 
             return(
-                <div class="stationName">
+                <div key={`RG-${station.place_id}`} className="stationName">
                     <h4>{label}</h4>
                     <h5>{station.name}</h5>
                 <div class="addressDetails">

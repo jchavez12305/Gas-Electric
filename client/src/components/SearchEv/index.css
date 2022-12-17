@@ -1,0 +1,14 @@
+.search {
+    background-color:rgb(2, 46, 55);
+    display: inline-flex;
+  }
+
+  .searchSection {
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+    background-color: #0f2b57;
+  }
+
+
+  

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Form from 'react-bootstrap/Form';
+import './index.css';
 
 function Sidebar() {
 	const [show, setShow] = useState(false);
@@ -39,9 +40,9 @@ function Sidebar() {
 							</div>
 						))}
 					</Form>
-					<Offcanvas.Title>Distance</Offcanvas.Title>
+					{/* <Offcanvas.Title>Distance</Offcanvas.Title> */}
 
-					<Form>
+					{/* <Form>
 						{['checkbox'].map((type) => (
 							<div key={`default-${type}`} className="mb-3">
 								<Form.Check
@@ -67,7 +68,7 @@ function Sidebar() {
 
 							</div>
 						))}
-					</Form>
+					</Form> */}
 				</Offcanvas.Body>
 			</Offcanvas>
 		</>
