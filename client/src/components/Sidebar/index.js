@@ -40,9 +40,9 @@ function Sidebar() {
 							</div>
 						))}
 					</Form>
-					<Offcanvas.Title>Distance</Offcanvas.Title>
+					{/* <Offcanvas.Title>Distance</Offcanvas.Title> */}
 
-					<Form>
+					{/* <Form>
 						{['checkbox'].map((type) => (
 							<div key={`default-${type}`} className="mb-3">
 								<Form.Check
@@ -68,7 +68,7 @@ function Sidebar() {
 
 							</div>
 						))}
-					</Form>
+					</Form> */}
 				</Offcanvas.Body>
 			</Offcanvas>
 		</>

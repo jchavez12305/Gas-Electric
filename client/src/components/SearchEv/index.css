@@ -1,10 +1,14 @@
 .search {
-    position:absolute;
-    padding-bottom: 6px;
-    /* padding-top: 6px; */
-    /* height: 70px; */
-    top: 100px;
-    left:450px;
     background-color:rgb(2, 46, 55);
-  
+    display: inline-flex;
   }
+
+  .searchSection {
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+    background-color: #0f2b57;
+  }
+
+
+  

@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  Row,
-  Container,
-  Col,
+  // Row,
+  // Container,
+  // Col,
   Form,
   Button,
 } from 'react-bootstrap';
 import './index.css';
-
+import Sidebar from '../Sidebar';
 
 
 function SearchEv(props) {
@@ -34,8 +34,8 @@ function SearchEv(props) {
         throw new Error('something went wrong!');
       }
 
-//       const stationsEv = await response.json();
-// console.log(stationsEv)
+      //       const stationsEv = await response.json();
+      // console.log(stationsEv)
 
       // props.setZipcodeInput("");
       // props.setstationsEV(stationsEv);
@@ -50,34 +50,23 @@ function SearchEv(props) {
   };
 
   return (
-    <>
-      <Container fluid className="text-light search" style={{width: "500px"}}  >
-        <h3>Search for EV Stations</h3>
-        <Form onSubmit={handleFormSubmit}>
+    <div className="searchSection">
+      <Sidebar />
+      <Button onClick={props.callGeolocation}>Use Current Location</Button>
+      <Form className="text-light search" onSubmit={handleFormSubmit}>
 
-          <Row>
-            <Col xs={12} md={8}>
+        <Form.Control
+          name="zipcodeInput"
+          // value={props.zipcodeInput}
+          onChange={handleChange}
+          type="text"
 
-              <Form.Control
-                name="zipcodeInput"
-                // value={props.zipcodeInput}
-                onChange={handleChange}
-                type="text"
-
-                size="sm"
-                placeholder="zip"
-              />
-            </Col>
-            <Col xs={12} md={4}>
-              <Button type="submit" variant="success" size="sm">
-                Submit Search
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-        <button onClick={props.callGeolocation}>Use Location</button>
-      </Container>
-    </>
+          size="sm"
+          placeholder="Search by Zip"
+        />
+        <Button type="submit" size="sm">Search</Button>
+      </Form>
+    </div>
   );
 }
 export default SearchEv;

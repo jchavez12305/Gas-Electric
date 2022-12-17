@@ -97,8 +97,7 @@ function Home() {
 	return (
 
 		<>
-			<Sidebar />
-			<SearchEv
+			<SearchEv				
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
@@ -110,7 +109,7 @@ function Home() {
 				search={search}
 				callGeolocation={callGeolocation}
 			/>
-			{/* <MapContainer
+			<MapContainer
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
@@ -121,7 +120,7 @@ function Home() {
 				setLocationMap={setLocationMap}
 				search={search}
 				geocode={geocode}
-			/> */}
+			/>
 			<StationListAPI
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}

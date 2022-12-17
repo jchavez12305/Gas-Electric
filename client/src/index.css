@@ -1,4 +1,4 @@
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* ! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css
 /* Document
    ========================================================================== */
 /**
@@ -1111,9 +1111,9 @@
     border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
   }
   
-  form {
+  /* form {
     width: 100%;
-  }
+  } */
   
   form .form-group {
     display: block;
@@ -1121,7 +1121,7 @@
     margin: 0.625rem 0;
   }
   
-  form .form-input,
+  /* form .form-input,
   form .form-textarea {
     display: block;
   }
@@ -1133,13 +1133,6 @@
     background-repeat: no-repeat;
     background-position-x: 98%;
     background-position-y: 50%;
-  }
-  
-  form label,
-  form .form-label {
-    display: inline-block;
-    font-size: 1.2rem;
-    margin: 0.625rem 0 0.25rem 0.3rem;
   }
   
   form .form-input {
@@ -1165,7 +1158,7 @@
   label form [type='checkbox'],
   label form [type='radio'] {
     display: inline-block;
-  }
+  } */
   
   .container {
     width: 85%;
@@ -1705,4 +1698,4 @@
     .align-content-center-xl {
       align-content: center;
     }
-  }
+  } 

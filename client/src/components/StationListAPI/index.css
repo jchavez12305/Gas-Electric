@@ -1,9 +1,11 @@
 .sidebarContainer {
     position: absolute;
-    width: 200px;
-    top: 300px;
+    width: 25%;
+    height: 60vh;
+    top: 35vh;
     left: 1%;
     z-index: 10;
-    background-color: white;
+    background-color: #F9CC0B;
+    opacity: .5;
     overflow-y: auto;
 }
