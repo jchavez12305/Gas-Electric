@@ -3,7 +3,7 @@ import MapContainer from '../../components/Map';
 import SearchEv from '../../components/SearchEv/index';
 import { useState } from 'react';
 import StationListAPI from '../../components/StationListAPI'
-import Sidebar from '../../components/Sidebar';
+// import Sidebar from '../../components/Sidebar';
 
 
 
