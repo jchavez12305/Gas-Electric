@@ -3,7 +3,7 @@ import MapContainer from '../../components/Map';
 import SearchEv from '../../components/SearchEv/index';
 import { useState } from 'react';
 import StationListAPI from '../../components/StationListAPI'
-import Sidebar from '../../components/Sidebar';
+// import Sidebar from '../../components/Sidebar';
 
 
 
@@ -108,20 +108,9 @@ function Home() {
 				setLocationMap={setLocationMap}
 				search={search}
 				callGeolocation={callGeolocation}
-			/>
-			<MapContainer
-				zipcodeInput={zipcodeInput}
-				setZipcodeInput={setZipcodeInput}
-				stationsFUEL={stationsFUEL}
-				setstationsFUEL={setstationsFUEL}
-				stationsEV={stationsEV}
-				setstationsEV={setstationsEV}
-				locationMap={locationMap}
-				setLocationMap={setLocationMap}
-				search={search}
 				geocode={geocode}
 			/>
-			<StationListAPI
+			<MapContainer
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
