@@ -1,4 +1,9 @@
 import React from "react";
+import { IoLocationSharp } from 'react-icons/io5';
+import { GoSearch } from 'react-icons/go';
+
+
+
 import {
   // Row,
   // Container,
@@ -52,7 +57,7 @@ function SearchEv(props) {
   return (
     <div className="searchSection">
       <Sidebar />
-      <Button onClick={props.callGeolocation}>Use Current Location</Button>
+      <IoLocationSharp onClick={props.callGeolocation} className= "location"/>
       <Form className="text-light search" onSubmit={handleFormSubmit}>
 
         <Form.Control
@@ -64,7 +69,7 @@ function SearchEv(props) {
           size="sm"
           placeholder="Search by Zip"
         />
-        <Button type="submit" size="sm">Search</Button>
+        <GoSearch/>
       </Form>
     </div>
   );

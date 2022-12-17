@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Form from 'react-bootstrap/Form';
 import './index.css';
+import { BsFilter } from 'react-icons/bs';
+
 
 function Sidebar() {
 	const [show, setShow] = useState(false);
@@ -11,10 +12,8 @@ function Sidebar() {
 	const handleShow = () => setShow(true);
 
 	return (
-		<>
-			<Button variant="primary" onClick={handleShow} className = "filter">
-				Filter
-			</Button>
+		<>	
+			<BsFilter onClick={handleShow} className = 'filtericon'/>
 
 			<Offcanvas show={show} onHide={handleClose}>
 				<Offcanvas.Header closeButton>

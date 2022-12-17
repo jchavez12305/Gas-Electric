@@ -1,6 +1,9 @@
 .search {
     background-color:rgb(2, 46, 55);
     display: inline-flex;
+    font-size:30px;
+
+
   }
 
   .searchSection {
@@ -10,5 +13,9 @@
     background-color: #0f2b57;
   }
 
+  .location {
+    color: aliceblue;
+    font-size:30px;
+  }
 
   
