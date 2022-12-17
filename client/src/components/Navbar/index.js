@@ -11,6 +11,10 @@ import './index.css';
 import Auth from "../../utils/auth"
 
 function Navbar() {
+	const logout = (event) => {
+		event.preventDefault();
+		Auth.logout();
+	};
 	const [show, setShow] = useState(false);
 	const [userFormData, setUserFormData] = useState({
 		username: '',
@@ -87,12 +91,24 @@ function Navbar() {
 				</a>
 				<h1 className='motto'>Find Gas and Electric Stations</h1>
 				<div className='signUp/In'>
-					<Button className='signBtn' onClick={handleSignInShow}>
+				{Auth.loggedIn() ? (
+            <>
+             
+              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Button className='signBtn' onClick={handleSignInShow}>
 						Sign In
 					</Button>
 					<Button className='signBtn' onClick={handleShow}>
 						Sign Up
 					</Button>
+            </>
+          )}
+					
 				</div>
 			</nav>
 
