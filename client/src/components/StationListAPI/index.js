@@ -45,7 +45,7 @@ let fuelIndex = 0;
                     <h4>{label}</h4>
                     <h5>{station.name}</h5>
                 <div class="addressDetails">
-                    {station.formatted_address}
+                    {station.formatted_address.split(", ").slice(0,-1)}
                 </div>
                 </div>
             )})}    
