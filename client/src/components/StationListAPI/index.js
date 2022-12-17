@@ -44,7 +44,7 @@ let fuelIndex = 0;
                 <div key={`RG-${station.place_id}`} className="stationName">
                     <h4>{label}</h4>
                     <h5>{station.name}</h5>
-                <div class="addressDetails">
+                <div className="addressDetails">
                     {station.formatted_address}
                 </div>
                 </div>
