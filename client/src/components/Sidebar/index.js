@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import Form from 'react-bootstrap/Form';
+import { Form, Button } from 'react-bootstrap';
 import './index.css';
 import { BsFilter } from 'react-icons/bs';
+import StationListAPI from '../StationListAPI'
 
 
-function Sidebar() {
+
+function Sidebar(props) {
 	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
 	return (
-		<>	
-			<BsFilter onClick={handleShow} className = 'filtericon'/>
+		<>
+			<Button title='Stations' onClick={handleShow}>
+				<BsFilter className='filtericon' />
+			</Button>
+
 
 			<Offcanvas show={show} onHide={handleClose}>
 				<Offcanvas.Header closeButton>
@@ -35,10 +40,21 @@ function Sidebar() {
 									id={`default-${type}`}
 									label={`Electric`}
 								/>
-
 							</div>
 						))}
 					</Form>
+					<StationListAPI
+						zipcodeInput={props.zipcodeInput}
+						setZipcodeInput={props.setZipcodeInput}
+						stationsFUEL={props.stationsFUEL}
+						setstationsFUEL={props.setstationsFUEL}
+						stationsEV={props.stationsEV}
+						setstationsEV={props.setstationsEV}
+						locationMap={props.locationMap}
+						setLocationMap={props.setLocationMap}
+						search={props.search}
+						geocode={props.geocode} />
+
 					{/* <Offcanvas.Title>Distance</Offcanvas.Title> */}
 
 					{/* <Form>

@@ -1,6 +1,6 @@
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import './index.css';
-
+import icon from '../../assets/images/image4.png';
 
 function MapContainer(props) {
   const { isLoaded } = useLoadScript({
@@ -53,9 +53,10 @@ function Map(props) {
         mapContainerClassName="map">
         <MarkerF
           position={{ lat: props.locationMap.lat, lng: props.locationMap.lng }}
-          title='user'
+          title='User'
           id='user'
           draggable
+          icon={icon}
           onDragEnd={props.newCenter}
         />
         {props.stationsEV.fuel_stations?.map((station) => {

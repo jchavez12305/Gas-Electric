@@ -1,4 +1,12 @@
 .filtericon {
     color: aliceblue;
     font-size:30px;
+    cursor: pointer;
+    padding-bottom: 5px;
+
 }
+
+/* .filtericon:hover {
+    filter: brightness(150%);
+
+} */

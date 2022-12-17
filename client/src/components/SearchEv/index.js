@@ -1,5 +1,5 @@
 import React from "react";
-import { IoLocationSharp } from 'react-icons/io5';
+import { BiCurrentLocation } from 'react-icons/bi';
 import { GoSearch } from 'react-icons/go';
 
 
@@ -13,6 +13,8 @@ import {
 } from 'react-bootstrap';
 import './index.css';
 import Sidebar from '../Sidebar';
+import $ from 'jquery';
+import { IoLocationSharp } from 'react-icons/io5';
 
 
 function SearchEv(props) {
@@ -24,6 +26,7 @@ function SearchEv(props) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    $('#searchInput').val('');
 
     let zip = localStorage.getItem('zip');
     if (!zip) {
@@ -56,8 +59,20 @@ function SearchEv(props) {
 
   return (
     <div className="searchSection">
-      <Sidebar />
-      <IoLocationSharp onClick={props.callGeolocation} className= "location"/>
+      <Sidebar 
+      zipcodeInput={props.zipcodeInput}
+      setZipcodeInput={props.setZipcodeInput}
+      stationsFUEL={props.stationsFUEL}
+      setstationsFUEL={props.setstationsFUEL}
+      stationsEV={props.stationsEV}
+      setstationsEV={props.setstationsEV}
+      locationMap={props.locationMap}
+      setLocationMap={props.setLocationMap}
+      search={props.search}
+      geocode={props.geocode}/>
+      <Button title='Use Current Location' onClick={props.callGeolocation}>
+        <IoLocationSharp className="location" />
+      </Button>
       <Form className="text-light search" onSubmit={handleFormSubmit}>
 
         <Form.Control
@@ -65,11 +80,15 @@ function SearchEv(props) {
           // value={props.zipcodeInput}
           onChange={handleChange}
           type="text"
-
+          id='searchInput'
           size="sm"
           placeholder="Search by Zip"
         />
-        <GoSearch/>
+
+
+        <Button type='submit'>
+          <GoSearch />
+        </Button>
       </Form>
     </div>
   );
