@@ -43,7 +43,8 @@ function Map(props) {
     return longerLabel;
   }
 
-
+  const emoji = require("emoji-dictionary");
+  
   return (
     <>
       <GoogleMap
@@ -59,21 +60,21 @@ function Map(props) {
         />
         {props.stationsEV.fuel_stations?.map((station) => {
           let position = { lat: station.latitude, lng: station.longitude };
-          let label = `E-${labelMaker(labelIndex)}`;
+          let label = `${emoji.getUnicode("electric_plug")}${labelMaker(labelIndex)}`;
           labelIndex++;
           let stationName = station.station_name;
           return (
-            <MarkerF key={`E-${station.id}`} position={position} label={label} title={stationName} />
+            <MarkerF className="marker" key={`E-${station.id}`} position={position} label={label} title={stationName} />
           )
         })};
         {props.stationsFUEL.results?.map((station) => {
           let location = station.geometry.location;
           let position = { lat: location.lat, lng: location.lng };
-          let label = `G-${labelMaker(fuelIndex)}`;
+          let label = `${emoji.getUnicode("fuelpump")}${labelMaker(fuelIndex)}`;
           fuelIndex++;
           let stationName = station.name;
           return (
-            <MarkerF key={`G-${station.place_id}`} position={position} label={label} title={stationName} />
+            <MarkerF className="marker" key={`G-${station.place_id}`} position={position} label={label} title={stationName} />
           )
         })};
       </GoogleMap>

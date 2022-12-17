@@ -15,5 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+    "emoji-dictionary": "^1.0.11"
   }
 }

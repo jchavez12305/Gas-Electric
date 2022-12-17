@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
 import './index.css'
+
  
 function StationListAPI(props) {
 
@@ -17,31 +18,35 @@ let fuelIndex = 0;
     longerLabel += labels[index % labels.length];
     return longerLabel;
   }
+  const emoji = require("emoji-dictionary");
 
     return (
         <div className="sidebarContainer">
-        <div>
-            <h1>test</h1>
-        </div>
             {props.stationsEV.fuel_stations?.map ((station) => {
-            let label = `E-${labelMaker(labelIndex)}`;
+            let label = `${emoji.getUnicode("electric_plug")}${labelMaker(labelIndex)}`;
             labelIndex++;
 
             return(
                 <div key={`RE-${station.id}`} className="stationName">
                     <h4>{label}</h4>
                     <h5>{station.station_name}</h5>
+                <div class="addressDetails">
+                    {station.street_address}, {station.city}, {station.state}, {station.zip}
+                </div>
                 </div>
             )})}
 
             {props.stationsFUEL.results?.map((station) => {
-            let label = `G-${labelMaker(fuelIndex)}`;
+            let label = `${emoji.getUnicode("fuelpump")}${labelMaker(fuelIndex)}`;
             fuelIndex++;
 
             return(
                 <div key={`RG-${station.place_id}`} className="stationName">
                     <h4>{label}</h4>
                     <h5>{station.name}</h5>
+                <div class="addressDetails">
+                    {station.formatted_address}
+                </div>
                 </div>
             )})}    
         </div>
