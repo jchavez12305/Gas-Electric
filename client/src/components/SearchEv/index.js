@@ -59,17 +59,21 @@ function SearchEv(props) {
 
   return (
     <div className="searchSection">
-      <Sidebar 
-      zipcodeInput={props.zipcodeInput}
-      setZipcodeInput={props.setZipcodeInput}
-      stationsFUEL={props.stationsFUEL}
-      setstationsFUEL={props.setstationsFUEL}
-      stationsEV={props.stationsEV}
-      setstationsEV={props.setstationsEV}
-      locationMap={props.locationMap}
-      setLocationMap={props.setLocationMap}
-      search={props.search}
-      geocode={props.geocode}/>
+      <Sidebar
+        zipcodeInput={props.zipcodeInput}
+        setZipcodeInput={props.setZipcodeInput}
+        stationsFUEL={props.stationsFUEL}
+        setstationsFUEL={props.setstationsFUEL}
+        stationsEV={props.stationsEV}
+        setstationsEV={props.setstationsEV}
+        locationMap={props.locationMap}
+        setLocationMap={props.setLocationMap}
+        search={props.search}
+        geocode={props.geocode}
+        evChecked={props.evChecked}
+				setEvChecked={props.setEvChecked}
+				gasChecked={props.gasChecked}
+				setGasChecked={props.setGasChecked} />
       <Button title='Use Current Location' onClick={props.callGeolocation}>
         <IoLocationSharp className="location" />
       </Button>

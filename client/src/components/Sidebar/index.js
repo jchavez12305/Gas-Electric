@@ -9,9 +9,25 @@ import StationListAPI from '../StationListAPI'
 
 function Sidebar(props) {
 	const [show, setShow] = useState(false);
-
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
+	const exclude = (e) => {
+		let checkbox = e.target.id;
+		if(checkbox==='default-gas'){
+			if(e.target.checked){
+				props.setGasChecked( true);
+			} else {
+				props.setGasChecked(false);
+			}
+		} else if (checkbox==='default-electric'){
+			if(e.target.checked){
+				props.setEvChecked(true);
+			} else {
+				props.setEvChecked(false);
+			}
+		}		
+	}
 
 	return (
 		<>
@@ -25,23 +41,26 @@ function Sidebar(props) {
 					<Offcanvas.Title>Filter Search</Offcanvas.Title>
 				</Offcanvas.Header>
 				<Offcanvas.Body>
-					<Offcanvas.Title>Fuel Type</Offcanvas.Title>
+					<Offcanvas.Title>Exclude Fuel Type</Offcanvas.Title>
 
 					<Form>
-						{['checkbox'].map((type) => (
-							<div key={`default-${type}`} className="mb-3">
-								<Form.Check
-									type={type}
-									id={`default-${type}`}
-									label={`Gas`}
-								/>
-								<Form.Check
-									type={type}
-									id={`default-${type}`}
-									label={`Electric`}
-								/>
-							</div>
-						))}
+
+						<div key={`default-checkbox`} className="mb-3">
+							<Form.Check
+								type='checkbox'
+								id={`default-gas`}
+								label={`Gas`}
+								onChange={exclude}
+								checked={props.gasChecked}
+							/>
+							<Form.Check
+								type='checkbox'
+								id={`default-electric`}
+								label={`Electric`}
+								onChange={exclude}
+								checked={props.evChecked}
+							/>
+						</div>
 					</Form>
 					<StationListAPI
 						zipcodeInput={props.zipcodeInput}
