@@ -24,7 +24,7 @@ let fuelIndex = 0;
                 <div key={`RE-${station.id}`} className="stationName">
                     <h4>{label}</h4>
                     <h5>{station.station_name}</h5>
-                <div class="addressDetails">
+                <div className="addressDetails">
                     {station.street_address}, {station.city}, {station.state}, {station.zip}
                 </div>
                 </div>

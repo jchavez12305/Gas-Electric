@@ -13,6 +13,8 @@ function Home() {
 	const [zipcodeInput, setZipcodeInput] = useState("");
 	const [stationsFUEL, setstationsFUEL] = useState("");
 	const [stationsEV, setstationsEV] = useState("");
+	const [gasChecked, setGasChecked] = useState(false);
+	const [evChecked, setEvChecked] = useState(false);
 
 	const callGeolocation = async () => {
 		try {
@@ -73,19 +75,30 @@ function Home() {
 		try {
 			let zip = localStorage.getItem('zip');
 			let latlng = JSON.parse(localStorage.getItem('latlng'));
-			const responseEv = await fetch(
-				`https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${zip}&${process.env.REACT_APP_EV_API_KEY}`
-			);
-			const responseFuel = await fetch(
-				`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zip}&key=${process.env.REACT_APP_GM_API_KEY}`
-			);
-			if (!responseEv.ok || !responseFuel.ok) {
-				throw new Error('something went wrong!');
+			let stationsEv = '';
+			let stationsFuel = '';
+
+			if(!evChecked){
+				const responseEv = await fetch(
+					`https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${zip}&${process.env.REACT_APP_EV_API_KEY}`
+				);
+				if (!responseEv.ok) {
+					throw new Error('something went wrong!');
+				}
+				stationsEv = await responseEv.json();
+
+			}		
+			if(!gasChecked){
+				const responseFuel = await fetch(
+					`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zip}&key=${process.env.REACT_APP_GM_API_KEY}`
+				);
+				if (!responseFuel.ok) {
+					throw new Error('something went wrong!');
+				}
+				stationsFuel = await responseFuel.json();
 			}
-			const stationsEv = await responseEv.json();
-			const stationsFuel = await responseFuel.json();
+			setstationsEV(stationsEv);	
 			setstationsFUEL(stationsFuel);
-			setstationsEV(stationsEv);
 			setLocationMap({ ...locationMap, lat: latlng.lat, lng: latlng.lng })
 			setZipcodeInput(...zipcodeInput, "");
 			console.log('search');
@@ -109,6 +122,10 @@ function Home() {
 				search={search}
 				callGeolocation={callGeolocation}
 				geocode={geocode}
+				evChecked={evChecked}
+				setEvChecked={setEvChecked}
+				gasChecked={gasChecked}
+				setGasChecked={setGasChecked}
 			/>
 			<MapContainer
 				zipcodeInput={zipcodeInput}
