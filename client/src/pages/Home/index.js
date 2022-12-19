@@ -88,7 +88,7 @@ function Home() {
 			}		
 			if(!gasChecked){
 				const responseFuel = await fetch(
-					`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zip}&key=${process.env.REACT_APP_GM_API_KEY}`
+					`https://gasncharge.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zip}&key=${process.env.REACT_APP_GM_API_KEY}`
 				);
 				if (!responseFuel.ok) {
 					throw new Error('something went wrong!');
