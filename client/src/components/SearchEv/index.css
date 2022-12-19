@@ -2,8 +2,6 @@
     background-color:rgb(2, 46, 55);
     display: inline-flex;
     font-size:30px;
-
-
   }
 
   .searchSection {
@@ -17,11 +15,11 @@
     color: aliceblue;
     font-size:30px;
     cursor: pointer;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
   }
 
-  /* .location:hover {
-    opacity: 50%;
-  } */
+  .go{
+    margin-bottom: 7px;
+  }
 
   

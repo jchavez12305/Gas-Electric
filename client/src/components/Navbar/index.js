@@ -1,21 +1,27 @@
 // import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
-import image from "../../assets/images/image2.png";
+import {
+	Button,
+	Form,
+	Modal
+} from 'react-bootstrap';
+import image from "../../assets/images/logo.png";
 import { useMutation } from '@apollo/client';
 import { ADD_USER, LOGIN_USER } from '../../utils/mutations';
 import './index.css';
-
 import Auth from "../../utils/auth"
 
 function Navbar() {
+
+	const [showSignIn, setSignInShow] = useState(false);
+	const [addUser, { error }] = useMutation(ADD_USER);
+	const [login] = useMutation(LOGIN_USER);
+	const [show, setShow] = useState(false);
+
 	const logout = (event) => {
 		event.preventDefault();
 		Auth.logout();
 	};
-	const [show, setShow] = useState(false);
 	const [userFormData, setUserFormData] = useState({
 		username: '',
 		email: '',
@@ -28,9 +34,6 @@ function Navbar() {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	const [showSignIn, setSignInShow] = useState(false);
-	const [addUser, { error }] = useMutation(ADD_USER);
-	const [login] = useMutation(LOGIN_USER);
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setUserFormData({ ...userFormData, [name]: value });
@@ -91,24 +94,24 @@ function Navbar() {
 				</a>
 				<h1 className='motto'>Find Gas and Electric Stations</h1>
 				<div className='signUp/In'>
-				{Auth.loggedIn() ? (
-            <>
-             
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Button className='signBtn' onClick={handleSignInShow}>
-						Sign In
-					</Button>
-					<Button className='signBtn' onClick={handleShow}>
-						Sign Up
-					</Button>
-            </>
-          )}
-					
+					{Auth.loggedIn() ? (
+						<>
+
+							<Button className="signBtn" onClick={logout}>
+								Logout
+							</Button>
+						</>
+					) : (
+						<>
+							<Button className='signBtn' onClick={handleSignInShow}>
+								Sign In
+							</Button>
+							<Button className='signBtn' onClick={handleShow}>
+								Sign Up
+							</Button>
+						</>
+					)}
+
 				</div>
 			</nav>
 
