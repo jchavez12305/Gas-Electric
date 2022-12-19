@@ -3,13 +3,12 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding: 20px; */
     height: 20vh;
+    padding: 0px 10px;
 }
 
 .logo {
     height: 100px;
-    /* padding-bottom: 5px; */
   }
   
   .motto {
@@ -22,4 +21,10 @@ nav{
     background-color: #0C1D36;
     font-weight: bold;
     border: #F9CC0B 2px solid;
+  }
+
+  @media screen and (max-width: 480px) {
+    .motto{
+        display: none;
+    }
   }

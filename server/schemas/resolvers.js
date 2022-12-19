@@ -41,32 +41,6 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		  },
-		//   saveStation: async (parent, { stationData }, context) => {
-		// 	if (context.user) {
-		// 	  const updatedUser = await User.findByIdAndUpdate(
-		// 		{ _id: context.user._id },
-		// 		{ $push: { savedStations: StationData } },
-		// 		{ new: true }
-		// 	  );
-	  
-		// 	  return updatedUser;
-		// 	}
-	  
-		// 	throw new AuthenticationError('You need to be logged in!');
-		//   },
-		//   removeStation: async (parent, { bookId }, context) => {
-		// 	if (context.user) {
-		// 	  const updatedUser = await User.findOneAndUpdate(
-		// 		{ _id: context.user._id },
-		// 		{ $pull: { savedStations: { bookId } } },
-		// 		{ new: true }
-		// 	  );
-	  
-		// 	  return updatedUser;
-		// 	}
-	  
-		// 	throw new AuthenticationError('You need to be logged in!');
-		//   },
 	},
 };
 

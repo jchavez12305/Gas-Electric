@@ -1,6 +1,6 @@
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import './index.css';
-import icon from '../../assets/images/image4.png';
+import icon from '../../assets/images/userMarker.png';
 
 function MapContainer(props) {
   const { isLoaded } = useLoadScript({
@@ -28,6 +28,7 @@ function MapContainer(props) {
 }
 
 function Map(props) {
+  const emoji = require("emoji-dictionary");
   //this is so it doesnt reset when it rerenders
   let labelIndex = 0;
   let fuelIndex = 0;
@@ -42,8 +43,6 @@ function Map(props) {
     longerLabel += labels[index % labels.length];
     return longerLabel;
   }
-
-  const emoji = require("emoji-dictionary");
   
   return (
     <>
