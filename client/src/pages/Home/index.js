@@ -2,8 +2,6 @@ import React from 'react';
 import MapContainer from '../../components/Map';
 import SearchEv from '../../components/SearchEv/index';
 import { useState } from 'react';
-import StationListAPI from '../../components/StationListAPI'
-// import Sidebar from '../../components/Sidebar';
 
 
 

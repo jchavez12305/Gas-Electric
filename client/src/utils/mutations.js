@@ -24,32 +24,4 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_STATION = gql`
-  mutation saveStation($stationData: stationInput!) {
-    savedStation(stationData: $stationData) {
-      _id
-      username
-      email
-      savedStations {
-        stationName
-        fuelType
-				address
-      }
-    }
-  }
-`;
 
-export const REMOVE_STATION = gql`
-  mutation removeStation($stationName: ID!) {
-    removeStation(stationName: $stationName) {
-      _id
-      username
-      email
-      savedStation {
-        stationName
-        fuelType
-				address
-      }
-    }
-  }
-`;
