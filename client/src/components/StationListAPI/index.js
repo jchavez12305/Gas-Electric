@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import React from 'react';
 import './index.css'
 import Card from 'react-bootstrap/card'
+
 
 
 // const PlaceDetails = ({ place, selected, refProp }) => {
@@ -27,31 +29,34 @@ let fuelIndex = 0;
             let label = `${emoji.getUnicode("electric_plug")}${labelMaker(labelIndex)}`;
             labelIndex++;
             return(
-                <Card style={{width: '20rem' }}>
-                <Card.body>
-                    <Card.Title>
                 <div key={`RE-${station.id}`} className="stationName">
                     <h4>{label}</h4>
                     <h5>{station.station_name}</h5>
-                </div>
-                    </Card.Title>
-                <Card.Text>
-                <div class="addressDetails">
+                <div class="addressDetails" style={{ borderBottom: "8px solid #0C1D36" }}>
                     {station.street_address}, {station.city}, {station.state}, {station.zip}
+                    <h6 style= {{color: 'green'}}><b> OPEN </b></h6>
                 </div>
-                </Card.Text>
-                </Card.body>
-                </Card>
+                </div>
             )})}
             {props.stationsFUEL.results?.map ((station) => {
             let label = `${emoji.getUnicode("fuelpump")}${labelMaker(fuelIndex)}`;
             fuelIndex++;
+            // console.log(station.opening_hours.open_now)
             return(
                 <div key={`RG-${station.place_id}`} className="stationName">
                     <h4>{label}</h4>
                     <h5>{station.name}</h5>
-                <div className="addressDetails">
-                    {station.formatted_address.split(", United States").slice(0,-1)}
+                <div className="addressDetails" style={{ borderBottom: "8px solid #0C1D36" }}>
+                    {station.formatted_address.split(", United States").slice(0,-1)},  
+                    {station.opening_hours && station.opening_hours.open_now ? (
+						<>
+                        <h6 style= {{color: 'green'}}><b> OPEN </b></h6>
+						</>
+					) : (
+						<>
+						<h6>  </h6>
+						</>
+					)}
                 </div>
                 </div>
             )})}
