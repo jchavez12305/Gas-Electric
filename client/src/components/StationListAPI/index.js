@@ -1,14 +1,7 @@
-import { useState, useEffect } from 'react';
 import React from 'react';
 import './index.css'
-import Card from 'react-bootstrap/card'
 
-
-
-// const PlaceDetails = ({ place, selected, refProp }) => {
-//     if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-//     const classes = useStyles();
-  
+ 
 function StationListAPI(props) {
 let labelIndex = 0;
 let fuelIndex = 0;
@@ -41,7 +34,7 @@ let fuelIndex = 0;
             {props.stationsFUEL.results?.map ((station) => {
             let label = `${emoji.getUnicode("fuelpump")}${labelMaker(fuelIndex)}`;
             fuelIndex++;
-            // console.log(station.opening_hours.open_now)
+
             return(
                 <div key={`RG-${station.place_id}`} className="stationName">
                     <h4>{label}</h4>
