@@ -88,8 +88,12 @@ function Home() {
 			}		
 			if(!gasChecked){
 				const responseFuel = await fetch(
-					`https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zip}&key=${process.env.REACT_APP_GM_API_KEY}`
-				);
+					`https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zip}&key=${process.env.REACT_APP_GM_API_KEY}`,
+					{
+						mode: 'cors',
+						headers: {
+						  'Access-Control-Allow-Origin':'https://gasncharge.herokuapp.com/'
+						}});
 				if (!responseFuel.ok) {
 					throw new Error('something went wrong!');
 				}
