@@ -76,7 +76,7 @@ function Home() {
 			let stationsEv = '';
 			let stationsFuel = '';
 
-			if(!evChecked){
+			if (!evChecked) {
 				const responseEv = await fetch(
 					`https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=ELEC&zip=${zip}&${process.env.REACT_APP_EV_API_KEY}`
 				);
@@ -84,22 +84,21 @@ function Home() {
 					throw new Error('something went wrong!');
 				}
 				stationsEv = await responseEv.json();
-
-			}		
-			if(!gasChecked){
+			}
+			if (!gasChecked) {
+				console.log('hi')
 				const responseFuel = await fetch(
-					`https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${zip}&key=${process.env.REACT_APP_GM_API_KEY}`,
-					{
-						mode: 'cors',
-						headers: {
-						  'Access-Control-Allow-Origin':'https://gasncharge.herokuapp.com/'
-						}});
+					`/gas?zip=${zip}`
+				);
+				console.log(responseFuel);
 				if (!responseFuel.ok) {
+					
 					throw new Error('something went wrong!');
 				}
 				stationsFuel = await responseFuel.json();
+				console.log(stationsFuel);
 			}
-			setstationsEV(stationsEv);	
+			setstationsEV(stationsEv);
 			setstationsFUEL(stationsFuel);
 			setLocationMap({ ...locationMap, lat: latlng.lat, lng: latlng.lng })
 			setZipcodeInput(...zipcodeInput, "");
@@ -112,7 +111,7 @@ function Home() {
 	return (
 
 		<>
-			<SearchEv				
+			<SearchEv
 				zipcodeInput={zipcodeInput}
 				setZipcodeInput={setZipcodeInput}
 				stationsFUEL={stationsFUEL}
