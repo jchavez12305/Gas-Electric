@@ -52,7 +52,7 @@ function Map(props) {
         mapContainerClassName="map">
         <MarkerF
           position={{ lat: props.locationMap.lat, lng: props.locationMap.lng }}
-          title='User'
+          title='Move me'
           id='user'
           draggable
           icon={icon}

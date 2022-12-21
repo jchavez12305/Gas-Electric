@@ -2,6 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+const fetch = require('node-fetch');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -24,6 +25,18 @@ if (process.env.NODE_ENV === 'production') {
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/'));
+})
+
+app.get('/gas', async (req, res) => {
+	try {
+		const response = await fetch(
+			`https://maps.googleapis.com/maps/api/place/textsearch/json?query=gas_station+in+${req.query.zip}&key=${process.env.API_KEY}`
+		);
+		let data = await response.json();
+		res.status(200).json(data);
+	} catch (err) {
+		res.status(500).json(err);
+	}
 })
 
 // Create a new instance of an Apollo server with the GraphQL schema
